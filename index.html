@@ -30,22 +30,12 @@
     <main>
         <h2>Últimos <span>doadores</span></h2>
         <section class="donors">
-            <div class="donor">
-                <div class="size">P</div>
-                <p>Ana Luiza</p>
-            </div>
-            <div class="donor">
-                <div class="size">M</div>
-                <p>Caio Neves</p>
-            </div>
-            <div class="donor">
-                <div class="size">G</div>
-                <p>Laura Beatriz</p>
-            </div>
-            <div class="donor">
-                <div class="size">GG</div>
-                <p>Eric Zappala</p>
-            </div>
+            {% for donor in donors %}
+                <div class="donor">
+                    <div class="size">{{ donor.size }}</div>
+                    <p>{{ donor.name }}</p>
+                </div>
+            {% endfor %}
         </section>
     </main>
     <footer>Com 💗 Rayan Wilbert!</footer>
