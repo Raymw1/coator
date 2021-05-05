@@ -28,7 +28,8 @@ var donors = [];
 
 server.get("/", function(req, res) {    // 4
     db.query("SELECT * FROM donors", function(err, result) {
-        if (err) return res.send("Database error!");
+        const message = "Database error!";
+        if (err) return res.render("apology.html", { message });
         donors = [
             {
                 name: "Ana Luiza",
@@ -70,7 +71,8 @@ server.post("/", function(req, res) {   // 7
     //     size: size
     // })
     if (name == "" || email == "" || size == "") {
-        return res.send("You forgot to insert something!");
+        const message = "You forgot to insert something!";
+        return res.render("public/apology.html", { message });
     }
     const sizes = ["PP", "P", "M", "G", "GG", "EG", "EGG", "XS", "S", "L", "XL", "XXL", "XXXL"];
     let sizeCorrect = false;
@@ -81,12 +83,13 @@ server.post("/", function(req, res) {   // 7
         }
     }
     if (!sizeCorrect) {
-        return res.send("Please, put an existing size!");
+        const message = "Please, put an existing size!";
+        return res.render("public/apology.html", { message });
     }
     const query = 'INSERT INTO donors ("name", "email", "size") VALUES ($1, $2, $3)';
     const values = [name, email, size];
     db.query(query, values, function(err) {
-        if (err) return res.send("Something went wrong;")
+        if (err) return res.render("public/apology.html");
         return res.redirect("/");
     });
 })
