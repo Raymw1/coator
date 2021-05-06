@@ -21,7 +21,7 @@ const db = new Pool({   // Configure database
 })
 
 server.listen(3000, function() {
-    console.log("Server started");   // 3
+    console.log("Go to: http://127.0.0.1:3000/");   // 3
 });
 
 var donors = [];
