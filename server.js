@@ -30,7 +30,7 @@ var sizes = ["PP", "P", "M", "G", "GG", "EG", "EGG", "XS", "S", "L", "XL", "XXL"
 server.get("/", function(req, res) {    // 4
     db.query("SELECT * FROM donors", function(err, result) {
         const message = "Erro na base de dados";
-        if (err) return res.render("apology.html", { message });
+        if (err) return res.render("public/apology.html", { message });
         donors = [
             {
                 name: "Ana Luiza",
