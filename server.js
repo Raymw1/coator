@@ -25,10 +25,11 @@ server.listen(3000, function() {
 });
 
 var donors = [];
+var sizes = ["PP", "P", "M", "G", "GG", "EG", "EGG", "XS", "S", "L", "XL", "XXL", "XXXL"];
 
 server.get("/", function(req, res) {    // 4
     db.query("SELECT * FROM donors", function(err, result) {
-        const message = "Database error!";
+        const message = "Erro na base de dados";
         if (err) return res.render("apology.html", { message });
         donors = [
             {
@@ -56,7 +57,7 @@ server.get("/", function(req, res) {    // 4
                 size: row.size
             });
         }
-        return res.render("index.html", { donors });
+        return res.render("index.html", { donors, sizes });
     });
 });
 
@@ -64,17 +65,16 @@ server.post("/", function(req, res) {   // 7
     const name = req.body.name;
     const email = req.body.email;
     let size = req.body.size;
-    size = size.toUpperCase();
     // donors.unshift({
-    //     name: name,
-    //     email: email,
-    //     size: size
-    // })
-    if (name == "" || email == "" || size == "") {
-        const message = "You forgot to insert something!";
+        //     name: name,
+        //     email: email,
+        //     size: size
+        // })
+    if (name == "" || email == "" || size == "" || !size) {
+        const message = "Você esqueceu de colocar algo!";
         return res.render("public/apology.html", { message });
     }
-    const sizes = ["PP", "P", "M", "G", "GG", "EG", "EGG", "XS", "S", "L", "XL", "XXL", "XXXL"];
+    size = size.toUpperCase();
     let sizeCorrect = false;
     for (let sizen of sizes) {
         if (size == sizen) {
@@ -83,7 +83,7 @@ server.post("/", function(req, res) {   // 7
         }
     }
     if (!sizeCorrect) {
-        const message = "Please, put an existing size!";
+        const message = "Por favor, coloque um tamanho válido!";
         return res.render("public/apology.html", { message });
     }
     const query = 'INSERT INTO donors ("name", "email", "size") VALUES ($1, $2, $3)';

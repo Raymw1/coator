@@ -79,7 +79,7 @@ button:hover {
     font-size: 18px;
 }
 
-form input, form button {
+form input, form button, form select {
     width: 100%;
     margin-bottom: 4px;
     padding: 8px 16px;
@@ -88,13 +88,22 @@ form input, form button {
     border-radius: 4px;
 }
 
-form input {
+form input, form select {
     background-color: transparent;
     color: #fff;
 }
 
-form input::placeholder {
+form input::placeholder, form select {
     color: #ffffffaa;
+}
+
+option:not(:first-of-type) {
+    color: #fff;
+    font-weight: bold;
+}
+
+option {
+    background-color: #32ABC6 !important;
 }
 
 main h2 span {
