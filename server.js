@@ -20,7 +20,9 @@ const db = new Pool({   // Configure database
     database: "coator"
 })
 
-server.listen(3000, function() {
+const PORT = process.env.PORT||"3000"
+
+server.listen(PORT, function() {
     console.log("Go to: http://127.0.0.1:3000/");   // 3
 });
 
