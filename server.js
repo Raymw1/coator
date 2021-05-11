@@ -14,7 +14,7 @@ server.use(express.urlencoded({ extended: true })); // 7
 const { Client } = require('pg');
 
 const db = new Client({
-  connectionString: "postgres://yuuxjudqzopjsx:e80d6be8db6bd0f25dfb75385b51f92278261a0dca276472b49a204f24253ea6@ec2-34-193-113-223.compute-1.amazonaws.com:5432/d128vptc18k1um",
+  connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
   }
