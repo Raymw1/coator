@@ -11,16 +11,27 @@ nunjucks.configure("./", {
 
 server.use(express.urlencoded({ extended: true })); // 7
 
-const Pool = require("pg").Pool;    // 8
-const db = new Pool({   // Configure database
-    user: "raymw",
-    password: "0000",
-    host: "localhost",
-    port: 5432,
-    database: "coator"
-})
+const { Client } = require('pg');
 
-const PORT = process.env.PORT||"3000"
+const db = new Client({
+  connectionString: "postgres://yuuxjudqzopjsx:e80d6be8db6bd0f25dfb75385b51f92278261a0dca276472b49a204f24253ea6@ec2-34-193-113-223.compute-1.amazonaws.com:5432/d128vptc18k1um",
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+db.connect();
+
+// const Pool = require("pg").Pool;    // 8
+// const db = new Pool({   // Configure database
+//     user: "raymw",
+//     password: "0000",
+//     host: "localhost",
+//     port: 5432,
+//     database: "coator"
+// })
+
+const PORT = process.env.PORT||"3001"
 
 server.listen(PORT, function() {
     console.log("Go to: http://127.0.0.1:3000/");   // 3
