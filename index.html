@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/coat.ico" type="image/x-icon">
     <title>Doe casacos! Doe calor!</title>
 </head>
 <body>
@@ -21,8 +22,8 @@
     <section class="form hide">
         <h2>Entre na lista de doadores</h2>
         <form action="/" method="POST">
-            <input type="text" placeholder="Nome completo" name="name" autocomplete="off">
-            <input type="text" placeholder="Email" name="email" autocomplete="off">
+            <input type="text" placeholder="Nome completo" name="name" autocomplete="off" required>
+            <input type="text" placeholder="Email" name="email" autocomplete="off" required>
             <!-- <input type="text" placeholder="Tamanho(P, M, G, GG)" name="size" autocomplete="off"> -->
             <select name="size" id="size" required>
                 <option value="" disabled selected hidden>Tamanho</option>
@@ -44,7 +45,7 @@
             {% endfor %}
         </section>
     </main>
-    <footer>Com 💗 Rayan Wilbert!</footer>
+    <footer>Com 💗 <a href="https://github.com/Raymw1" target="_blank">Rayan Wilbert</a></footer>
     <script src="scripts/script.js"></script>
 </body>
 </html>
