@@ -122,6 +122,9 @@ main .donors {
 }
 
 .size {
+    background: url(/assets/coat.png) no-repeat;
+    height: 60px;
+    background-position-x: 50%;
     color: #2c94ac;
     font-weight: bolder;
     font-size: 15px;
@@ -131,15 +134,8 @@ main .donors {
     position: relative; 
 }
 
-.size::before {
-    content: url(/assets/coat.png);
-    width: 70px;
-    height: 70px;
-    position: absolute;
-}
-
 .donor p {
-    margin-top: 24px;
+    margin-top: 15px;
     margin-bottom: 50px;
 }
 
