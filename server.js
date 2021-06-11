@@ -83,7 +83,7 @@ server.post("/", function(req, res) {   // 7
         //     email: email,
         //     size: size
         // })
-    if (name == "" || email == "" || size == "" || !size) {
+    if (name.trim() == "" || email.trim() == "" || size.trim() == "" || !size) {
         const message = "Você esqueceu de colocar algo!";
         return res.render("public/apology.html", { message });
     }
