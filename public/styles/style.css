@@ -167,3 +167,9 @@ section.form.hide {
     height: 0;
     margin-top: -70px;
 }
+
+@media (max-width: 500px) {
+    .form {
+        padding: 16px 32px;
+    }
+}
